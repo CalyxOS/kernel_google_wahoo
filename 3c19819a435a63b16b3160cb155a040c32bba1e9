@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8340befd_9be7a7e1",
+        "filename": "build.config.calyx",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2021-02-19T14:53:48Z",
+      "side": 1,
+      "message": "This https://review.calyxos.org/c/CalyxOS/platform_manifest/+/2554",
+      "revId": "3c19819a435a63b16b3160cb155a040c32bba1e9",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0",
+      "unresolved": true
+    }
+  ]
+}
