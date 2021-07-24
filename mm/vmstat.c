@@ -980,6 +980,9 @@ static void pagetypeinfo_showfree_print(struct seq_file *m,
 			list_for_each(curr, &area->free_list[mtype])
 				freecount++;
 			seq_printf(m, "%6lu ", freecount);
+			spin_unlock_irq(&zone->lock);
+			cond_resched();
+			spin_lock_irq(&zone->lock);
 		}
 		seq_putc(m, '\n');
 	}
@@ -1397,7 +1400,7 @@ static cpumask_var_t cpu_stat_off;
 
 static void vmstat_update(struct work_struct *w)
 {
-	if (refresh_cpu_vm_stats(true)) {
+	if (refresh_cpu_vm_stats(true) && !cpu_isolated(smp_processor_id())) {
 		/*
 		 * Counters were updated so we expect more updates
 		 * to occur in the future. Keep on running the
@@ -1496,7 +1499,7 @@ static void vmstat_shepherd(struct work_struct *w)
 	for_each_cpu(cpu, cpu_stat_off) {
 		struct delayed_work *dw = &per_cpu(vmstat_work, cpu);
 
-		if (need_update(cpu)) {
+		if (!cpu_isolated(cpu) && need_update(cpu)) {
 			if (cpumask_test_and_clear_cpu(cpu, cpu_stat_off))
 				queue_delayed_work_on(cpu, vmstat_wq, dw, 0);
 		} else {
