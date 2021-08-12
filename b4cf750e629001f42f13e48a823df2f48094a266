@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f4586e_5d594bc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2021-08-12T12:44:47Z",
+      "side": 1,
+      "message": "Needed only after android-4.4 merge",
+      "revId": "b4cf750e629001f42f13e48a823df2f48094a266",
+      "serverId": "35266860-6252-469c-a67d-185064479fc0"
+    }
+  ]
+}
